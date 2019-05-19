@@ -10,11 +10,9 @@ namespace BME280Logger {
     class Program {
         static void Main(string[] args) {
             new WaitForDebugger();
-
-
-            SqlConnection _con = new SqlConnection("");
-
-            SpiConnectionSettings _spiConnectionSettings = new SpiConnectionSettings(2, 1) {
+            
+            SpiConnectionSettings _spiConnectionSettings = new SpiConnectionSettings(AppSettings.Default.SpiBus,
+                AppSettings.Default.SpiChipSelect) {
                 Mode = SpiMode.Mode0,
                 DataBitLength = 8
             };
@@ -34,6 +32,11 @@ namespace BME280Logger {
 
             DateTime _lastLog = DateTime.MinValue;
 
+            SqlConnection _con = new SqlConnection(AppSettings.Default.DBConnection);
+            _con.Open();
+            SqlCommand _command = new SqlCommand(Resources.InsertCommand, _con);
+            _command.Parameters["Source"].Value = AppSettings.Default.Source;
+            
             while (true) {
                 _bme280.Update();
                 string _data = $"Pressure : {_bme280.Pressure:0.0} Pa, Humidity : {_bme280.Humidity:0.00}%, Temprature : {_bme280.Temperature:0.00}°C";
@@ -43,6 +46,11 @@ namespace BME280Logger {
                     _lastLog = DateTime.Now;
                     File.AppendAllLines("BME280.log", new string[] { _logData });
                     Console.WriteLine(_logData);
+                    _command.Parameters["Id"].Value = new Guid().ToString();
+                    _command.Parameters["Barometric"].Value = _bme280.Pressure;
+                    _command.Parameters["Humidity"].Value = _bme280.Humidity;
+                    _command.Parameters["Temperature"].Value = _bme280.Temperature;
+                    _command.ExecuteNonQuery();
                 }
                 else {
                     Console.WriteLine(_data);

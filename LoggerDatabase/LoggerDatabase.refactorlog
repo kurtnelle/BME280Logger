@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="6b7bf486-23d1-4fea-8333-5bbabfdb6c73" ChangeDateTime="05/19/2019 19:52:46">
+    <Property Name="ElementName" Value="[dbo].[BME280].[BarometricValue]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[BME280]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Barometric" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4e53cc9d-3140-452d-b6fc-76eefe168536" ChangeDateTime="05/19/2019 19:53:02">
+    <Property Name="ElementName" Value="[dbo].[BME280].[Tempreature]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[BME280]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Temperature" />
+  </Operation>
+</Operations>

@@ -1,0 +1,6 @@
+K:\Documents\Visual Studio 2019\Projects\BME280Logger\LoggerDatabase\bin\Debug\LoggerDatabase.dacpac
+K:\Documents\Visual Studio 2019\Projects\BME280Logger\LoggerDatabase\bin\Debug\LoggerDatabase.dll
+K:\Documents\Visual Studio 2019\Projects\BME280Logger\LoggerDatabase\bin\Debug\LoggerDatabase.pdb
+K:\Documents\Visual Studio 2019\Projects\BME280Logger\LoggerDatabase\obj\Debug\LoggerDatabase.sqlprojAssemblyReference.cache
+K:\Documents\Visual Studio 2019\Projects\BME280Logger\LoggerDatabase\obj\Debug\LoggerDatabase.dll
+K:\Documents\Visual Studio 2019\Projects\BME280Logger\LoggerDatabase\obj\Debug\LoggerDatabase.pdb

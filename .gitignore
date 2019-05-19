@@ -3,3 +3,5 @@
 ################################################################################
 
 /.vs
+/LoggerDatabase/LoggerDatabase.dbmdl
+/LoggerDatabase/LoggerDatabase.jfm

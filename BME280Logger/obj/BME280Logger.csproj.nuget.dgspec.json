@@ -52,6 +52,10 @@
               "version": "[2.2.0, )",
               "autoReferenced": true
             },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.6.1, )"

@@ -12,3 +12,5 @@ K:\Documents\Visual Studio 2019\Projects\BME280Logger\BME280Logger\bin\Debug\net
 K:\Documents\Visual Studio 2019\Projects\BME280Logger\BME280Logger\obj\Debug\netcoreapp2.2\BME280Logger.csproj.CopyComplete
 K:\Documents\Visual Studio 2019\Projects\BME280Logger\BME280Logger\obj\Debug\netcoreapp2.2\BME280Logger.dll
 K:\Documents\Visual Studio 2019\Projects\BME280Logger\BME280Logger\obj\Debug\netcoreapp2.2\BME280Logger.pdb
+K:\Documents\Visual Studio 2019\Projects\BME280Logger\BME280Logger\obj\Debug\netcoreapp2.2\BME280Logger.Resources.resources
+K:\Documents\Visual Studio 2019\Projects\BME280Logger\BME280Logger\obj\Debug\netcoreapp2.2\BME280Logger.csproj.GenerateResource.cache
