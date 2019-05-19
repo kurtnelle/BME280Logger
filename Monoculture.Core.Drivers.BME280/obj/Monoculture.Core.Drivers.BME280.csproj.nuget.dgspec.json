@@ -1,0 +1,65 @@
+{
+  "format": 1,
+  "restore": {
+    "K:\\Documents\\Visual Studio 2019\\Projects\\BME280Logger\\Monoculture.Core.Drivers.BME280\\Monoculture.Core.Drivers.BME280.csproj": {}
+  },
+  "projects": {
+    "K:\\Documents\\Visual Studio 2019\\Projects\\BME280Logger\\Monoculture.Core.Drivers.BME280\\Monoculture.Core.Drivers.BME280.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "K:\\Documents\\Visual Studio 2019\\Projects\\BME280Logger\\Monoculture.Core.Drivers.BME280\\Monoculture.Core.Drivers.BME280.csproj",
+        "projectName": "Monoculture.Core.Drivers.BME280",
+        "projectPath": "K:\\Documents\\Visual Studio 2019\\Projects\\BME280Logger\\Monoculture.Core.Drivers.BME280\\Monoculture.Core.Drivers.BME280.csproj",
+        "packagesPath": "C:\\Users\\shawn\\.nuget\\packages\\",
+        "outputPath": "K:\\Documents\\Visual Studio 2019\\Projects\\BME280Logger\\Monoculture.Core.Drivers.BME280\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\shawn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://dotnet.myget.org/F/dotnet-core/api/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "System.Device.Gpio": {
+              "target": "Package",
+              "version": "[0.1.0-prerelease.19171.3, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
