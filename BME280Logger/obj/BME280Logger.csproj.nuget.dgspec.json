@@ -51,6 +51,14 @@
               "target": "Package",
               "version": "[2.2.0, )",
               "autoReferenced": true
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.6.1, )"
+            },
+            "System.Device.Gpio": {
+              "target": "Package",
+              "version": "[0.1.0-prerelease.19171.3, )"
             }
           },
           "imports": [
