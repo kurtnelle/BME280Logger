@@ -1,6 +1,6 @@
-﻿using Monoculture.Core.Drivers.BME280;
+﻿using Microsoft.Data.SqlClient;
+using Monoculture.Core.Drivers.BME280;
 using System;
-using System.Data.SqlClient;
 using System.Device.Spi;
 using System.Device.Spi.Drivers;
 using System.IO;
@@ -9,10 +9,11 @@ using System.Threading;
 namespace BME280Logger {
     class Program {
         static void Main(string[] args) {
-            new WaitForDebugger();
+            //new WaitForDebugger();
             
-            SpiConnectionSettings _spiConnectionSettings = new SpiConnectionSettings(AppSettings.Default.SpiBus,
-                AppSettings.Default.SpiChipSelect) {
+
+            SpiConnectionSettings _spiConnectionSettings = new SpiConnectionSettings(2,
+                1) {
                 Mode = SpiMode.Mode0,
                 DataBitLength = 8
             };
@@ -32,11 +33,17 @@ namespace BME280Logger {
 
             DateTime _lastLog = DateTime.MinValue;
 
-            SqlConnection _con = new SqlConnection(AppSettings.Default.DBConnection);
+            string _connectionString = @"Data Source=192.168.1.10\SQL2K16;Initial Catalog=LoggerDatabase;Persist Security Info=True;User ID=logger;Password=******;";
+
+            SqlConnection _con = new SqlConnection(_connectionString);
             _con.Open();
             SqlCommand _command = new SqlCommand(Resources.InsertCommand, _con);
-            _command.Parameters["Source"].Value = AppSettings.Default.Source;
-            
+            _command.Parameters.Add(new SqlParameter("Source", "Source1"));
+            _command.Parameters.Add(new SqlParameter("Id", System.Data.SqlDbType.UniqueIdentifier));
+            _command.Parameters.Add(new SqlParameter("Barometric", System.Data.SqlDbType.Decimal));
+            _command.Parameters.Add(new SqlParameter("Humidity", System.Data.SqlDbType.Decimal));
+            _command.Parameters.Add(new SqlParameter("Temperature", System.Data.SqlDbType.Decimal));
+
             while (true) {
                 _bme280.Update();
                 string _data = $"Pressure : {_bme280.Pressure:0.0} Pa, Humidity : {_bme280.Humidity:0.00}%, Temprature : {_bme280.Temperature:0.00}°C";
@@ -46,7 +53,7 @@ namespace BME280Logger {
                     _lastLog = DateTime.Now;
                     File.AppendAllLines("BME280.log", new string[] { _logData });
                     Console.WriteLine(_logData);
-                    _command.Parameters["Id"].Value = new Guid().ToString();
+                    _command.Parameters["Id"].Value = Guid.NewGuid();
                     _command.Parameters["Barometric"].Value = _bme280.Pressure;
                     _command.Parameters["Humidity"].Value = _bme280.Humidity;
                     _command.Parameters["Temperature"].Value = _bme280.Temperature;

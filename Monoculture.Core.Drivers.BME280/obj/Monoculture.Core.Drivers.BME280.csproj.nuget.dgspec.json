@@ -48,9 +48,9 @@
               "version": "[2.0.3, )",
               "autoReferenced": true
             },
-            "System.Device.Gpio": {
+            "System.Memory": {
               "target": "Package",
-              "version": "[0.1.0-prerelease.19171.3, )"
+              "version": "[4.5.3, )"
             }
           },
           "imports": [

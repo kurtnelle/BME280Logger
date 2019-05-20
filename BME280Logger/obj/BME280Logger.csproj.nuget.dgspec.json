@@ -46,23 +46,15 @@
       "frameworks": {
         "netcoreapp2.2": {
           "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[1.0.19128.1-Preview, )"
+            },
             "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.2.0, )",
               "autoReferenced": true
-            },
-            "System.Configuration.ConfigurationManager": {
-              "target": "Package",
-              "version": "[4.5.0, )"
-            },
-            "System.Data.SqlClient": {
-              "target": "Package",
-              "version": "[4.6.1, )"
-            },
-            "System.Device.Gpio": {
-              "target": "Package",
-              "version": "[0.1.0-prerelease.19171.3, )"
             }
           },
           "imports": [
@@ -117,9 +109,9 @@
               "version": "[2.0.3, )",
               "autoReferenced": true
             },
-            "System.Device.Gpio": {
+            "System.Memory": {
               "target": "Package",
-              "version": "[0.1.0-prerelease.19171.3, )"
+              "version": "[4.5.3, )"
             }
           },
           "imports": [

@@ -8,9 +8,7 @@
     <SourceRevisionId>build$([System.DateTime]::UtcNow.ToString("yyyyMMddHHmmss"))</SourceRevisionId>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.6.1" />
-    <PackageReference Include="System.Device.Gpio" Version="0.1.0-prerelease.19171.3" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="1.0.19128.1-Preview" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Monoculture.Core.Drivers.BME280\Monoculture.Core.Drivers.BME280.csproj" />
@@ -22,13 +20,12 @@
     <Reference Include="System">
       <HintPath>System</HintPath>
     </Reference>
+    <Reference Include="System.Device.Gpio">
+      <HintPath>..\Monoculture.Core.Drivers.BME280\System.Device.Gpio.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="AppSettings.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>AppSettings.settings</DependentUpon>
-    </Compile>
     <Compile Update="Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -41,10 +38,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Update="AppSettings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>AppSettings.Designer.cs</LastGenOutput>
-    </None>
     <None Update="Settings1.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
