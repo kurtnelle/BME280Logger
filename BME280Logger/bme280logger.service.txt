@@ -1,0 +1,14 @@
+﻿[Unit]  
+Description=BME280 Logger Service
+  
+[Service]  
+ExecStart=/home/debian/dotnet/dotnet BME280Logger.dll
+WorkingDirectory=/home/debian/BME280Logger 
+User=debian
+Group=debian
+Restart=on-failure 
+SyslogIdentifier=bme280-logger-service
+PrivateTmp=true 
+  
+[Install]  
+WantedBy=multi-user.target
