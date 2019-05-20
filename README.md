@@ -1,6 +1,7 @@
 # BME280Logger
 BME280 to MSSQL Logger on dotnet core
 Original driver for TinyClr provided by : https://github.com/monoculture/Monoculture.TinyCLR.Drivers.BME280
+Also utilizes the prototype library : https://github.com/dotnet/iot/tree/master/src/System.Device.Gpio
 
 Driver was migrated from TinyClr using the I2C bus to DotNetCore using the SPI bus on a PocketBeagle.
 
