@@ -9,7 +9,7 @@ using System.Threading;
 namespace BME280Logger {
     class Program {
         static void Main(string[] args) {
-            new WaitForDebugger();
+            //new WaitForDebugger();
             
 
             SpiConnectionSettings _spiConnectionSettings = new SpiConnectionSettings(2,
