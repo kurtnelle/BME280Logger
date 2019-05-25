@@ -1,5 +1,6 @@
 ﻿/*
- *
+ * Author: Monoculture 2019
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,8 +14,10 @@
  * limitations under the License.
  */
 
-namespace Monoculture.Core.Drivers.BME280 {
-    internal class BME280CFData {
+namespace Monoculture.Core.Drivers.BME280
+{
+    internal class BME280CFData
+    {
         public ushort T1 { get; set; }
         public short T2 { get; set; }
         public short T3 { get; set; }

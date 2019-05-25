@@ -1,5 +1,6 @@
 ﻿/*
- *
+ * Author: Monoculture 2019
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,8 +14,10 @@
  * limitations under the License.
  */
 
-namespace Monoculture.Core.Drivers.BME280 {
-    public enum BME280OverSample : byte {
+namespace Monoculture.Core.Drivers.BME280
+{
+    public enum BME280OverSample : byte
+    {
         None = 0b000,
         X1 = 0b001,
         X2 = 0b010,

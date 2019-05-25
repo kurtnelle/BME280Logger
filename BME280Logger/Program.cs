@@ -9,7 +9,7 @@ using System.Threading;
 namespace BME280Logger {
     class Program {
         static void Main(string[] args) {
-            //new WaitForDebugger();
+            new WaitForDebugger();
             
 
             SpiConnectionSettings _spiConnectionSettings = new SpiConnectionSettings(2,
@@ -33,7 +33,7 @@ namespace BME280Logger {
 
             DateTime _lastLog = DateTime.MinValue;
 
-            string _connectionString = @"Data Source=192.168.1.10\SQL2K16;Initial Catalog=LoggerDatabase;Persist Security Info=True;User ID=logger;Password=******;";
+            string _connectionString = @"Data Source=192.168.1.10\SQL2K16;Initial Catalog=LoggerDatabase;User ID=logger;Password=logger";
 
             SqlConnection _con = new SqlConnection(_connectionString);
             _con.Open();
@@ -45,7 +45,7 @@ namespace BME280Logger {
             _command.Parameters.Add(new SqlParameter("Temperature", System.Data.SqlDbType.Decimal));
 
             while (true) {
-                _bme280.Update();
+                _bme280.Read();
                 string _data = $"Pressure : {_bme280.Pressure:0.0} Pa, Humidity : {_bme280.Humidity:0.00}%, Temprature : {_bme280.Temperature:0.00}°C";
                 string _logData = $"[{DateTime.Now.ToString("dddd MMM dd, yyyy h:mm:ss tt")}] {_data}";
 

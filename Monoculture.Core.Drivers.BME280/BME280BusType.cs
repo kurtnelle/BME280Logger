@@ -16,12 +16,9 @@
 
 namespace Monoculture.Core.Drivers.BME280
 {
-    public enum BME280Filter : byte
+    public enum BME280BusType
     {
-        Off = 0b000,
-        X2 = 0b001,
-        X4 = 0b010,
-        X8 = 0b011,
-        X16 = 0b100
+        I2C,
+        Spi
     }
 }
