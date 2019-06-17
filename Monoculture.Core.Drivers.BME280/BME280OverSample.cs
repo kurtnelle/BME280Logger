@@ -18,11 +18,11 @@ namespace Monoculture.Core.Drivers.BME280
 {
     public enum BME280OverSample : byte
     {
-        None = 0b000,
-        X1 = 0b001,
-        X2 = 0b010,
-        X4 = 0b011,
-        X8 = 0b100,
-        X16 = 0b101
+        None = 0,
+        X1 = 1,
+        X2 = 2,
+        X4 = 3,
+        X8 = 4,
+        X16 = 5
     }
 }

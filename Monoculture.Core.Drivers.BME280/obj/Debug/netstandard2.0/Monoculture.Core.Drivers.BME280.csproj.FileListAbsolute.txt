@@ -3,10 +3,10 @@ K:\Documents\Visual Studio 2019\Projects\BME280Logger\Monoculture.Core.Drivers.B
 K:\Documents\Visual Studio 2019\Projects\BME280Logger\Monoculture.Core.Drivers.BME280\bin\Debug\netstandard2.0\Monoculture.Core.Drivers.BME280.deps.json
 K:\Documents\Visual Studio 2019\Projects\BME280Logger\Monoculture.Core.Drivers.BME280\bin\Debug\netstandard2.0\Monoculture.Core.Drivers.BME280.dll
 K:\Documents\Visual Studio 2019\Projects\BME280Logger\Monoculture.Core.Drivers.BME280\bin\Debug\netstandard2.0\Monoculture.Core.Drivers.BME280.pdb
+K:\Documents\Visual Studio 2019\Projects\BME280Logger\Monoculture.Core.Drivers.BME280\obj\Debug\netstandard2.0\Monoculture.Core.Drivers.BME280.csprojAssemblyReference.cache
 K:\Documents\Visual Studio 2019\Projects\BME280Logger\Monoculture.Core.Drivers.BME280\obj\Debug\netstandard2.0\Monoculture.Core.Drivers.BME280.csproj.CoreCompileInputs.cache
 K:\Documents\Visual Studio 2019\Projects\BME280Logger\Monoculture.Core.Drivers.BME280\obj\Debug\netstandard2.0\Monoculture.Core.Drivers.BME280.AssemblyInfoInputs.cache
 K:\Documents\Visual Studio 2019\Projects\BME280Logger\Monoculture.Core.Drivers.BME280\obj\Debug\netstandard2.0\Monoculture.Core.Drivers.BME280.AssemblyInfo.cs
 K:\Documents\Visual Studio 2019\Projects\BME280Logger\Monoculture.Core.Drivers.BME280\obj\Debug\netstandard2.0\Monoculture.Core.Drivers.BME280.csproj.CopyComplete
 K:\Documents\Visual Studio 2019\Projects\BME280Logger\Monoculture.Core.Drivers.BME280\obj\Debug\netstandard2.0\Monoculture.Core.Drivers.BME280.dll
 K:\Documents\Visual Studio 2019\Projects\BME280Logger\Monoculture.Core.Drivers.BME280\obj\Debug\netstandard2.0\Monoculture.Core.Drivers.BME280.pdb
-K:\Documents\Visual Studio 2019\Projects\BME280Logger\Monoculture.Core.Drivers.BME280\obj\Debug\netstandard2.0\Monoculture.Core.Drivers.BME280.csprojAssemblyReference.cache

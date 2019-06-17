@@ -93,7 +93,7 @@ namespace Monoculture.Core.Drivers.BME280
 
                 Array.Copy(data, 0, writeBuffer, 1, data.Length);
 
-                I2CDevice.Write(writeBuffer);
+                I2CDevice.Write(new ReadOnlySpan<byte>(writeBuffer));
             }
             else
             {

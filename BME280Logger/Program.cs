@@ -1,6 +1,8 @@
 ﻿using Microsoft.Data.SqlClient;
 using Monoculture.Core.Drivers.BME280;
 using System;
+using System.Device.I2c.Drivers;
+using System.Device.I2c;
 using System.Device.Spi;
 using System.Device.Spi.Drivers;
 using System.IO;
@@ -10,10 +12,11 @@ namespace BME280Logger {
     class Program {
         static void Main(string[] args) {
             //new WaitForDebugger();
-            
+
 
             SpiConnectionSettings _spiConnectionSettings = new SpiConnectionSettings(2,
-                1) {
+                1)
+            {
                 Mode = SpiMode.Mode0,
                 DataBitLength = 8
             };
@@ -21,6 +24,11 @@ namespace BME280Logger {
             UnixSpiDevice _spiDevice = new UnixSpiDevice(_spiConnectionSettings);
 
             BME280Driver _bme280 = new BME280Driver(_spiDevice);
+
+            //I2cConnectionSettings _i2cConnectionSettings = new System.Device.I2c.I2cConnectionSettings(2, 0x76);
+            //UnixI2cDevice _i2c = new UnixI2cDevice(_i2cConnectionSettings);
+            //BME280Driver _bme280 = new BME280Driver(_i2c);
+
 
             _bme280.Initialize();
 
@@ -57,7 +65,7 @@ namespace BME280Logger {
                     _command.Parameters["Barometric"].Value = _bme280.Pressure;
                     _command.Parameters["Humidity"].Value = _bme280.Humidity;
                     _command.Parameters["Temperature"].Value = _bme280.Temperature;
-                    _command.ExecuteNonQuery();
+                    //_command.ExecuteNonQuery();
                 }
                 else {
                     Console.WriteLine(_data);

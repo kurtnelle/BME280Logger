@@ -18,8 +18,8 @@ namespace Monoculture.Core.Drivers.BME280
 {
     public enum BME280SensorMode : byte
     {
-        Sleep = 0x00,
-        Forced = 0x01,
-        Normal = 0x11
+        Sleep = 0,
+        Forced = 1,
+        Normal = 3
     }
 }

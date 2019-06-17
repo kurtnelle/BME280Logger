@@ -103,46 +103,47 @@ namespace Monoculture.Core.Drivers.BME280
 
         private void Reset()
         {
-            _device.WriteRegister(Constants.BME280_REGISTER_SOFTRESET, 0xB6); 
+            _device.WriteRegister(BME280Constants.BME280_REG_RESET, BME280Constants.BME280_CMD_SOFTRESET); 
 
             Thread.Sleep(300);
         }
 
         private void ChipId()
         {
-            byte chipId = _device.ReadRegister(Constants.BME280_REGISTER_CHIPID);
+            byte chipId = _device.ReadRegister(BME280Constants.BME280_REG_CHIPID);
 
-            if (chipId != 0x60)
+            if (chipId != BME280Constants.BME280_CHIP_ID)
                 throw new ApplicationException("Unrecognized chip");
         }
 
-        private void LoadCalibration()
+		private void LoadCalibration()
         {
-            byte crc = _device.ReadRegister(0xE8); 
+            byte storedCrc = _device.ReadRegister(BME280Constants.BME280_CRC_DATA_ADDR); 
 
-            var calibrationBuffer = new byte[33];
+            var data1 = _device.ReadRegion(BME280Constants.BME280_CRC_CALIB1_ADDR, BME280Constants.BME280_CRC_CALIB1_LEN);
 
-            var x1 = _device.ReadRegion(0x88, 27);
-            var x2 = _device.ReadRegion(0xE1, 8);
+            var data2 = _device.ReadRegion(BME280Constants.BME280_CRC_CALIB2_ADDR, BME280Constants.BME280_CRC_CALIB2_LEN);
 
-            Array.Copy(x1, 0, calibrationBuffer, 0, 26);
+            var calibrationBuffer = new byte[data1.Length + data2.Length];
 
-            Array.Copy(x2, 0, calibrationBuffer, 26, 7);
-                
-             _calibration = new BME280CFData
+            data1.CopyTo(calibrationBuffer, 0);
+
+            data2.CopyTo(calibrationBuffer, data1.Length);
+
+            _calibration = new BME280CFData
             {
                 T1 = BitConverter.ToUInt16(calibrationBuffer, 0),
-                T2 = BitConverter.ToInt16(calibrationBuffer, 2),
-                T3 = BitConverter.ToInt16(calibrationBuffer, 4),
+                T2 = BitConverter.ToInt16(calibrationBuffer,  2),
+                T3 = BitConverter.ToInt16(calibrationBuffer,  4),
                 P1 = BitConverter.ToUInt16(calibrationBuffer, 6),
-                P2 = BitConverter.ToInt16(calibrationBuffer, 8),
-                P3 = BitConverter.ToInt16(calibrationBuffer, 10),
-                P4 = BitConverter.ToInt16(calibrationBuffer, 12),
-                P5 = BitConverter.ToInt16(calibrationBuffer, 14),
-                P6 = BitConverter.ToInt16(calibrationBuffer, 16),
-                P7 = BitConverter.ToInt16(calibrationBuffer, 18),
-                P8 = BitConverter.ToInt16(calibrationBuffer, 20),
-                P9 = BitConverter.ToInt16(calibrationBuffer, 22),
+                P2 = BitConverter.ToInt16(calibrationBuffer,  8),
+                P3 = BitConverter.ToInt16(calibrationBuffer,  10),
+                P4 = BitConverter.ToInt16(calibrationBuffer,  12),
+                P5 = BitConverter.ToInt16(calibrationBuffer,  14),
+                P6 = BitConverter.ToInt16(calibrationBuffer,  16),
+                P7 = BitConverter.ToInt16(calibrationBuffer,  18),
+                P8 = BitConverter.ToInt16(calibrationBuffer,  20),
+                P9 = BitConverter.ToInt16(calibrationBuffer,  22),
                 H1 = calibrationBuffer[25],
                 H2 = BitConverter.ToInt16(calibrationBuffer, 26),
                 H3 = calibrationBuffer[28],
@@ -151,7 +152,9 @@ namespace Monoculture.Core.Drivers.BME280
                 H6 = (sbyte)calibrationBuffer[32]
             };
 
-            if (crc != CalculateCrc(calibrationBuffer))
+            var calculatedCrc = CalculateCrc(calibrationBuffer);
+
+            if (storedCrc != calculatedCrc)
                 throw new ApplicationException("CRC error loading configuration.");
         }
 
@@ -183,13 +186,13 @@ namespace Monoculture.Core.Drivers.BME280
             return (byte)(crcReg ^ 0xFF);
         }
 
-        public void ChangeSettings(
+		public void ChangeSettings(
             BME280SensorMode sensorMode = BME280SensorMode.Normal,
-            BME280OverSample osrTemperature = BME280OverSample.X16,
-            BME280OverSample osrPressure = BME280OverSample.X16,
-            BME280OverSample osrHumidity = BME280OverSample.X16,
+            BME280OverSample osrTemperature = BME280OverSample.X1,
+            BME280OverSample osrPressure = BME280OverSample.X1,
+            BME280OverSample osrHumidity = BME280OverSample.X1,
             BME280Filter filter = BME280Filter.Off,
-            BME280StandbyTime standbyDuration = BME280StandbyTime.Ms05)
+            BME280StandbyTime standbyDuration = BME280StandbyTime.Ms1000)
         {
             Filter = filter;
             SensorMode = sensorMode;
@@ -203,17 +206,17 @@ namespace Monoculture.Core.Drivers.BME280
 
         private void WriteSettings()
         {
-            var humiReg = (byte) OsrHumidity;
+            var humiReg = (byte) ((byte) OsrHumidity & 0x07) ;
 
             var measReg = (byte)(((byte)OsrTemperature << 5) |
-                                 ((byte)OsrPressure << 3) |
+                                 (((byte)OsrPressure & 0x07) << 2) |
                                  (byte)SensorMode);
 
-            var confReg = (byte)((byte)StandbyDuration << 5 | (byte)Filter << 3 | 0); 
+            var confReg = (byte)(((byte)StandbyDuration & 0x07) << 5 | ((byte) Filter & 0x07) << 3 | 0); 
 
-            _device.WriteRegister(0xF2, humiReg);
-            _device.WriteRegister(0xF5, confReg); 
-            _device.WriteRegister(0xF4, measReg);
+            _device.WriteRegister(BME280Constants.BME280_REG_CTRL_HUM, humiReg);
+            _device.WriteRegister(BME280Constants.BME280_REG_CONFIG, confReg); 
+            _device.WriteRegister(BME280Constants.BME280_REG_CTRL_MEAS, measReg);
         }
 
         private void TakeForcedReading()
@@ -223,7 +226,7 @@ namespace Monoculture.Core.Drivers.BME280
                                  (byte)SensorMode);
 
             
-            _device.WriteRegister(Constants.BME280_REGISTER_CONTROL, measReg); 
+            _device.WriteRegister(BME280Constants.BME280_REG_CTRL_MEAS, measReg); 
 
             Thread.Sleep(100);
         }
@@ -235,26 +238,23 @@ namespace Monoculture.Core.Drivers.BME280
                 TakeForcedReading();
             }
 
-            var buffer = _device.ReadRegion(Constants.BME280_REGISTER_PRESSUREDATA, 8);
-
-            _rawHumidity = buffer[7] | buffer[6] << 8;
+            var buffer = _device.ReadRegion(BME280Constants.BME280_REG_PRE_MSB, 8);
 
             _rawPressure = buffer[0] << 12 | buffer[1] << 4 | buffer[2] >> 4;
 
             _rawTemperature = buffer[3] << 12 | buffer[4] << 4 | buffer[5] >> 4;
 
-            var var1 = _rawTemperature / 16384.0 - _calibration.T1 / 1024.0;
+            _rawHumidity = buffer[7] | buffer[6] << 8;
 
-            var1 = var1 * _calibration.T2;
+            var var1 = (_rawTemperature / 16384.0 - _calibration.T1 / 1024.0 ) * _calibration.T2;
 
-            var var2 = _rawTemperature / 131072.0 - _calibration.T1 / 8192.0;
-
-            var2 = var2 * var2 * _calibration.T3;
+            var var2 = Math.Pow(_rawTemperature / 131072.0 - _calibration.T1 / 8192.0, 2) * _calibration.T3; ;
 
             _tFine = var1 + var2;
         }
-
-
+        /// <summary>
+        /// Returns temperature in DegC, resolution is 0.01 DegC.
+        /// </summary>															 
         public double Temperature
         {
             get
@@ -277,7 +277,10 @@ namespace Monoculture.Core.Drivers.BME280
             }
         }
 
-        public double Pressure
+        /// <summary>
+        /// Returns pressure in Pa
+        /// </summary>
+		public double Pressure
         {
             get
             {
@@ -286,7 +289,7 @@ namespace Monoculture.Core.Drivers.BME280
                 const double pressureMin = 30000.0;
                 const double pressureMax = 110000.0;
 
-                var var1 = _tFine / 2.0 - 64000.0;
+                var var1 = (_tFine / 2.0) - 64000.0;
 
                 var var2 = var1 * var1 * _calibration.P6 / 32768.0;
 
@@ -308,7 +311,7 @@ namespace Monoculture.Core.Drivers.BME280
 
                     var1 = _calibration.P9 * pressure * pressure / 2147483648.0;
 
-                    var2 = pressure * _calibration.P8 / 2768.0;
+                    var2 = pressure * _calibration.P8 / 32768.0;
 
                     pressure = pressure + (var1 + var2 + _calibration.P7) / 16.0;
 
@@ -329,7 +332,9 @@ namespace Monoculture.Core.Drivers.BME280
                 return pressure;
             }
         }
-
+        /// <summary>
+        /// Returns relative humidity in %
+        /// </summary>					 
         public double Humidity
         {
             get

@@ -18,13 +18,13 @@ namespace Monoculture.Core.Drivers.BME280
 {
     public enum BME280StandbyTime : byte
     {
-        Ms05 = 0b000,
-        Ms10 = 0b110,
-        Ms20 = 0b111,
-        Ms625 = 0b001,
-        Ms125 = 0b010,
-        Ms250 = 0b011,
-        Ms500 = 0b100,
-        Ms1000 = 0b101
+        Ms05 = 0,
+        Ms625 = 1,
+        Ms125 = 2,
+        Ms250 = 3,
+        Ms500 = 4,
+        Ms1000 = 5,
+        Ms10 = 6,
+        Ms20 = 7
     }
 }
