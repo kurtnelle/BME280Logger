@@ -41,7 +41,7 @@ namespace BME280Logger {
 
             DateTime _lastLog = DateTime.MinValue;
 
-            string _connectionString = @"Data Source=192.168.1.10\SQL2K16;Initial Catalog=LoggerDatabase;User ID=logger;Password=logger";
+            string _connectionString = @"Data Source=tenmikes.local;Initial Catalog=LoggerDatabase;User ID=logger;Password=;Connect Timeout=5";
 
             SqlConnection _con = new SqlConnection(_connectionString);
             _con.Open();
@@ -65,7 +65,7 @@ namespace BME280Logger {
                     _command.Parameters["Barometric"].Value = _bme280.Pressure;
                     _command.Parameters["Humidity"].Value = _bme280.Humidity;
                     _command.Parameters["Temperature"].Value = _bme280.Temperature;
-                    //_command.ExecuteNonQuery();
+                    _command.ExecuteNonQuery();
                 }
                 else {
                     Console.WriteLine(_data);

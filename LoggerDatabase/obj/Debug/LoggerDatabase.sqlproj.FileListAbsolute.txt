@@ -8,3 +8,9 @@ K:\Documents\Visual Studio 2019\Projects\BME280Logger\LoggerDatabase\obj\Debug\M
 K:\Documents\Visual Studio 2019\Projects\BME280Logger\LoggerDatabase\obj\Debug\refactor.xml
 K:\Documents\Visual Studio 2019\Projects\BME280Logger\LoggerDatabase\obj\Debug\postdeploy.sql
 K:\Documents\Visual Studio 2019\Projects\BME280Logger\LoggerDatabase\obj\Debug\predeploy.sql
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\LoggerDatabase\bin\Debug\LoggerDatabase.dacpac
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\LoggerDatabase\bin\Debug\LoggerDatabase.dll
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\LoggerDatabase\bin\Debug\LoggerDatabase.pdb
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\LoggerDatabase\obj\Debug\LoggerDatabase.sqlprojAssemblyReference.cache
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\LoggerDatabase\obj\Debug\LoggerDatabase.dll
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\LoggerDatabase\obj\Debug\LoggerDatabase.pdb

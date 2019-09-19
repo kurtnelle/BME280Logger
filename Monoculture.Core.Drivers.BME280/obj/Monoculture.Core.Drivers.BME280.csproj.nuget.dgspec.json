@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "K:\\Documents\\Visual Studio 2019\\Projects\\BME280Logger\\Monoculture.Core.Drivers.BME280\\Monoculture.Core.Drivers.BME280.csproj": {}
+    "C:\\Users\\shawn\\source\\repos\\kurtnelle\\BME280Logger\\Monoculture.Core.Drivers.BME280\\Monoculture.Core.Drivers.BME280.csproj": {}
   },
   "projects": {
-    "K:\\Documents\\Visual Studio 2019\\Projects\\BME280Logger\\Monoculture.Core.Drivers.BME280\\Monoculture.Core.Drivers.BME280.csproj": {
+    "C:\\Users\\shawn\\source\\repos\\kurtnelle\\BME280Logger\\Monoculture.Core.Drivers.BME280\\Monoculture.Core.Drivers.BME280.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "K:\\Documents\\Visual Studio 2019\\Projects\\BME280Logger\\Monoculture.Core.Drivers.BME280\\Monoculture.Core.Drivers.BME280.csproj",
+        "projectUniqueName": "C:\\Users\\shawn\\source\\repos\\kurtnelle\\BME280Logger\\Monoculture.Core.Drivers.BME280\\Monoculture.Core.Drivers.BME280.csproj",
         "projectName": "Monoculture.Core.Drivers.BME280",
-        "projectPath": "K:\\Documents\\Visual Studio 2019\\Projects\\BME280Logger\\Monoculture.Core.Drivers.BME280\\Monoculture.Core.Drivers.BME280.csproj",
+        "projectPath": "C:\\Users\\shawn\\source\\repos\\kurtnelle\\BME280Logger\\Monoculture.Core.Drivers.BME280\\Monoculture.Core.Drivers.BME280.csproj",
         "packagesPath": "C:\\Users\\shawn\\.nuget\\packages\\",
-        "outputPath": "K:\\Documents\\Visual Studio 2019\\Projects\\BME280Logger\\Monoculture.Core.Drivers.BME280\\obj\\",
+        "outputPath": "C:\\Users\\shawn\\source\\repos\\kurtnelle\\BME280Logger\\Monoculture.Core.Drivers.BME280\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -25,8 +25,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://dotnet.myget.org/F/dotnet-core/api/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.0": {
