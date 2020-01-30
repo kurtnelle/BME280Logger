@@ -40,8 +40,16 @@ namespace BME280Logger {
                 BME280Filter.Off);
 
             DateTime _lastLog = DateTime.MinValue;
-
-            string _connectionString = @"Data Source=tenmikes.local;Initial Catalog=LoggerDatabase;User ID=logger;Password=;Connect Timeout=5";
+            string _connectionString = string.Empty;
+            if (File.Exists("connectionstring.txt"))
+            {
+                _connectionString = File.ReadAllText("connectionstring.txt");
+            }
+            else
+            {
+                Console.WriteLine("connectionstring.txt not found. exiting");
+                return;
+            }
 
             SqlConnection _con = new SqlConnection(_connectionString);
             _con.Open();
@@ -54,7 +62,7 @@ namespace BME280Logger {
 
             while (true) {
                 _bme280.Read();
-                string _data = $"Pressure : {_bme280.Pressure:0.0} Pa, Humidity : {_bme280.Humidity:0.00}%, Temprature : {_bme280.Temperature:0.00}°C";
+                string _data = $"Pressure : {_bme280.Pressure:0.0} Pa, Humidity : {_bme280.Humidity:0.00}%, Tempreature : {_bme280.Temperature:0.00}°C";
                 string _logData = $"[{DateTime.Now.ToString("dddd MMM dd, yyyy h:mm:ss tt")}] {_data}";
 
                 if ((DateTime.Now - _lastLog).TotalMinutes > 1) {
