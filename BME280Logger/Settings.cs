@@ -21,3 +21,18 @@ namespace BME280Logger
 
     }
 }
+
+//{
+//	"ConnectionString": "Data Source=tenmikes.local;Initial Catalog=LoggerDatabase;User ID=logger;Password=******;Connect Timeout=5",
+//	"Source": "Source1",
+//	"MaxTemp": null,
+//	"MinTemp": null,
+//	"MinHumidity": null,
+//	"MaxHumidity": null,
+//	"MinPressure": null,
+//	"MaxPressure": null,
+//	"FastPollSpeed": 10,
+//	"NormalPollSpeed": 60,
+//	"WifiStation": "",
+//	"WifiStationPassword": ""
+//}
