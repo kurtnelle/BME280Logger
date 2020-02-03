@@ -35,4 +35,5 @@ C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\obj\Debug\netcor
 C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\obj\Debug\netcoreapp2.2\BME280Logger.csproj.CopyComplete
 C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\obj\Debug\netcoreapp2.2\BME280Logger.dll
 C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\obj\Debug\netcoreapp2.2\BME280Logger.pdb
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\bin\Debug\netcoreapp2.2\source.txt
 C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\bin\Debug\netcoreapp2.2\connectionstring.txt

@@ -17,3 +17,22 @@ K:\Documents\Visual Studio 2019\Projects\BME280Logger\BME280Logger\obj\Release\n
 K:\Documents\Visual Studio 2019\Projects\BME280Logger\BME280Logger\bin\Release\netcoreapp2.2\BME280Logger.dll.config
 K:\Documents\Visual Studio 2019\Projects\BME280Logger\BME280Logger\bin\Release\netcoreapp2.2\System.Device.Gpio.dll
 K:\Documents\Visual Studio 2019\Projects\BME280Logger\BME280Logger\bin\Release\netcoreapp2.2\System.Device.Gpio.Native.so
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\bin\Release\netcoreapp2.2\System.Device.Gpio.dll
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\bin\Release\netcoreapp2.2\System.Device.Gpio.Native.so
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\bin\Release\netcoreapp2.2\source.txt
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\bin\Release\netcoreapp2.2\BME280Logger.dll.config
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\bin\Release\netcoreapp2.2\BME280Logger.deps.json
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\bin\Release\netcoreapp2.2\BME280Logger.runtimeconfig.json
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\bin\Release\netcoreapp2.2\BME280Logger.runtimeconfig.dev.json
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\bin\Release\netcoreapp2.2\BME280Logger.dll
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\bin\Release\netcoreapp2.2\BME280Logger.pdb
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\bin\Release\netcoreapp2.2\Monoculture.Core.Drivers.BME280.dll
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\bin\Release\netcoreapp2.2\Monoculture.Core.Drivers.BME280.pdb
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\obj\Release\netcoreapp2.2\BME280Logger.csprojAssemblyReference.cache
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\obj\Release\netcoreapp2.2\BME280Logger.Resources.resources
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\obj\Release\netcoreapp2.2\BME280Logger.csproj.GenerateResource.cache
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\obj\Release\netcoreapp2.2\BME280Logger.AssemblyInfoInputs.cache
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\obj\Release\netcoreapp2.2\BME280Logger.AssemblyInfo.cs
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\obj\Release\netcoreapp2.2\BME280Logger.csproj.CopyComplete
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\obj\Release\netcoreapp2.2\BME280Logger.dll
+C:\Users\shawn\source\repos\kurtnelle\BME280Logger\BME280Logger\obj\Release\netcoreapp2.2\BME280Logger.pdb
