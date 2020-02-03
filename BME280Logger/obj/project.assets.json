@@ -5591,7 +5591,8 @@
     ".NETCoreApp,Version=v2.2": [
       "Microsoft.Data.SqlClient >= 1.1.0",
       "Microsoft.NETCore.App >= 2.2.0",
-      "Monoculture.Core.Drivers.BME280 >= 1.0.0"
+      "Monoculture.Core.Drivers.BME280 >= 1.0.0",
+      "Newtonsoft.Json >= 10.0.1"
     ]
   },
   "packageFolders": {
@@ -5649,6 +5650,10 @@
             "target": "Package",
             "version": "[2.2.0, )",
             "autoReferenced": true
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[10.0.1, )"
           }
         },
         "imports": [

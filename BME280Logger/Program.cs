@@ -7,11 +7,19 @@ using System.Device.Spi;
 using System.Device.Spi.Drivers;
 using System.IO;
 using System.Threading;
+using Newtonsoft.Json;
 
 namespace BME280Logger {
     class Program {
         static void Main(string[] args) {
             //new WaitForDebugger();
+            if (!File.Exists("settings.json"))
+            {
+                Console.WriteLine("settings.json was not found. outputting default file and exiting.");
+                File.WriteAllText("settings.json", JsonConvert.SerializeObject(new Settings()));
+                Environment.Exit(25); //no settings json
+            }
+            Settings settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText("settings.json"));
 
 
             SpiConnectionSettings _spiConnectionSettings = new SpiConnectionSettings(2,
@@ -31,18 +39,17 @@ namespace BME280Logger {
 
             DateTime _lastLog = DateTime.MinValue;
             string _connectionString = string.Empty;
-            if (File.Exists("connectionstring.txt"))
+            if (!string.IsNullOrEmpty(settings.ConnectionString))
             {
-                _connectionString = File.ReadAllText("connectionstring.txt");
                 Console.WriteLine("Connection string found. Connecting to DB...");
             }
             else
             {
-                Console.WriteLine("connectionstring.txt not found. exiting");
+                Console.WriteLine("Connection string not found. exiting");
                 Environment.Exit(45); //connection string not found
             }
 
-            SqlConnection _con = new SqlConnection(_connectionString);
+            SqlConnection _con = new SqlConnection(settings.ConnectionString);
             try
             {
                 _con.Open();
@@ -63,30 +70,41 @@ namespace BME280Logger {
                 BME280OverSample.X1,
                 BME280Filter.Off);
 
+
+
+
             SqlCommand _command = new SqlCommand(Resources.InsertCommand, _con);
-            _command.Parameters.Add(new SqlParameter("Source", File.Exists("source.txt") ? File.ReadAllText("source.txt") : "Source1"));
+            _command.Parameters.Add(new SqlParameter("Source", settings.Source));
             _command.Parameters.Add(new SqlParameter("Id", System.Data.SqlDbType.UniqueIdentifier));
             _command.Parameters.Add(new SqlParameter("Barometric", System.Data.SqlDbType.Decimal));
             _command.Parameters.Add(new SqlParameter("Humidity", System.Data.SqlDbType.Decimal));
             _command.Parameters.Add(new SqlParameter("Temperature", System.Data.SqlDbType.Decimal));
-            int _loggingIntervalInSeconds = 60;
+            int _loggingIntervalInSeconds = settings.NormalPollSpeed;
             while (true) {
                 _bme280.Read();
                 string _data = $"Pressure : {_bme280.Pressure:0.0} Pa, Humidity : {_bme280.Humidity:0.00}%, Tempreature : {_bme280.Temperature:0.00}°C";
                 string _logData = $"[{DateTime.Now.ToString("dddd MMM dd, yyyy h:mm:ss tt")}] {_data}";
 
-                if(_bme280.Temperature > 1 || _bme280.Humidity > 70)
+                if (settings.FastPollSpeed.HasValue)
                 {
-                    _loggingIntervalInSeconds = 10;
-                }
-                else
-                {
-                    _loggingIntervalInSeconds = 60;
+                    if((settings.MinTemp.HasValue && _bme280.Temperature <= settings.MinTemp.Value) ||
+                       (settings.MaxTemp.HasValue && _bme280.Temperature >= settings.MaxTemp.Value) ||
+                       (settings.MinHumidity.HasValue && _bme280.Humidity <= settings.MinHumidity.Value)||
+                       (settings.MaxHumidity.HasValue && _bme280.Humidity >= settings.MaxHumidity.Value)||
+                       (settings.MinPressure.HasValue && _bme280.Pressure <= settings.MinPressure.Value)||
+                       (settings.MaxPressure.HasValue && _bme280.Pressure >= settings.MaxPressure.Value))
+                    {
+                        _loggingIntervalInSeconds = settings.FastPollSpeed.Value;
+                    }
+                    else
+                    {
+                        _loggingIntervalInSeconds = settings.NormalPollSpeed;
+                    }
                 }
 
                 if ((DateTime.Now - _lastLog).TotalSeconds > _loggingIntervalInSeconds) {
                     _lastLog = DateTime.Now;
-                    File.AppendAllLines("BME280.log", new string[] { _logData });
+                    //File.AppendAllLines("BME280.log", new string[] { _logData });
                     Console.WriteLine(_logData);
                     _command.Parameters["Id"].Value = Guid.NewGuid();
                     _command.Parameters["Barometric"].Value = _bme280.Pressure;
@@ -101,10 +119,11 @@ namespace BME280Logger {
                         _command.ExecuteNonQuery();
                         _con.Close();
                     }
-                    catch(SqlException sqEx)
+                    catch(SqlException sqlEx)
                     {
-                        Console.WriteLine("Error executing query command");
-                        throw sqEx;
+                        Console.WriteLine("Error executing query command..");
+                        Console.WriteLine(sqlEx.Message);
+                        //throw sqEx;
                     }
                 }
                 else {
