@@ -1,1 +1,1 @@
-Data Source=tenmikes.local;Initial Catalog=LoggerDatabase;User ID=logger;Password=logger;Connect Timeout=5
+Data Source=tenmikes.local;Initial Catalog=LoggerDatabase;User ID=logger;Password=*****;Connect Timeout=5
